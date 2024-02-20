@@ -11,5 +11,5 @@ func _ready() -> void:
 		"base_attr":{},
 		
 	}
-	var cc := Characters.new(dic)
+	var cc := PlayerCharacter.new(dic)
 	add_child(cc)

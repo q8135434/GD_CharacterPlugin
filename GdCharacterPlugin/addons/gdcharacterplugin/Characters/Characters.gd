@@ -22,8 +22,8 @@ var level:int = 1 :
 #昵称
 var nick_name :String
 
-#预制体 
-var prefab
+#预制体 无需移动/碰撞等  直接挂载Node2D
+var prefab 
 
 #生命值
 var max_health :float
@@ -69,27 +69,21 @@ func _init(_data:Dictionary) -> void:
 func _ready() -> void:
 	max_health = get_max_health()
 	max_mana   = get_max_mana()
-
+	_update_prefab("")
 
 #更新预制体
 func _update_prefab(_path:String) -> void:
+	_path = "res://node_2_dss.tscn"
 	prefab = load(_path)
 
-#最大生命值 敌人这里需要重写
+#虚函数 最大生命值 
 func get_max_health() -> float:
-	var basic = 100 + (level-1)*20 + attribute.strength*3 + attribute.constitution*5 + attribute.skill_attr.health + attribute.equip_attr.health
-	var rate  = attribute.skill_attr.health_rate + attribute.equip_attr.health_rate
-	var final = basic * (1 + rate)
-	return min(final,60000)
+	return 0
 	
 #最大魔法值 敌人这里需要重写
 func get_max_mana() -> float:
-	var basic = 40 + (level-1)*5 + attribute.perception*3 + attribute.intellect*5 + attribute.skill_attr.mana + attribute.equip_attr.mana
-	var rate  = attribute.skill_attr.mana_rate + attribute.equip_attr.mana_rate
-	var final = basic * (1 + rate)
-	return min(final,35000)
+	return 0
 
-#使用技能
+#虚函数 使用技能
 func select_skill(index:int) -> void:
-	
-	return
+	return 
