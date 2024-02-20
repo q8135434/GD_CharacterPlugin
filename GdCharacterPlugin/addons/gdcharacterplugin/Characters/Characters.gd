@@ -73,7 +73,8 @@ func _ready() -> void:
 
 #更新预制体
 func _update_prefab(_path:String) -> void:
-	_path = "res://node_2_dss.tscn"
+	if not _path:
+		return
 	prefab = load(_path)
 
 #虚函数 最大生命值 
