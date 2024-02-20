@@ -60,16 +60,16 @@ func _init(_data:Dictionary) -> void:
 	
 	experience = _data["experience"]
 	nick_name  = _data["nick_name"]
-	prefab     = _data["prefab"]
 	
 	cur_health = _data["cur_health"]
 	cur_mana   = _data["cur_mana"]
 	
+	_update_prefab(_data["prefab"])
 	
 func _ready() -> void:
 	max_health = get_max_health()
 	max_mana   = get_max_mana()
-	_update_prefab("")
+	
 
 #更新预制体
 func _update_prefab(_path:String) -> void:
